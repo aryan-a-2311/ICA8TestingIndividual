@@ -6,10 +6,10 @@ class UrinalsTest {
 
     @Test
     void validateInputTest() {
-        System.out.println("======ARYAN AGARWAL====== TEST ONE (THAT FAILS)");
+        System.out.println("======ARYAN AGARWAL====== TEST ONE EXECUTED (THAT FAILS)");
 
         Urinals urinal1 = new Urinals();
-
-        assertEquals(true, urinal1.validateInput("1010101010"));
+        //Testing with 24 characters
+        assertEquals(true, urinal1.validateInputLength("101010101010101010101010"));
     }
 }

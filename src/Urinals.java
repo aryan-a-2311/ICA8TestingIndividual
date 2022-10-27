@@ -1,7 +1,9 @@
 public class Urinals {
-    public boolean validateInput(String bitString)
+    public boolean validateInputLength(String bitString)
     {
-        System.out.println("Not yet implemented");
-        return false;
+        if(bitString.length() <= 20)
+            return true;
+        else
+            return false;
     }
 }
