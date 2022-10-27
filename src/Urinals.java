@@ -6,4 +6,16 @@ public class Urinals {
         else
             return false;
     }
+
+    public boolean validateInputType(String bitString)
+    {
+        for(int i=0; i < bitString.length(); i++)
+        {
+            if(bitString.charAt(i) != '0' && bitString.charAt(i) != '1')
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -3,13 +3,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UrinalsTest {
+    Urinals urinal1 = new Urinals();
 
     @Test
-    void validateInputTest() {
-        System.out.println("======ARYAN AGARWAL====== TEST ONE EXECUTED (THAT FAILS)");
+    void validateInputLength() {
+        System.out.println("======ARYAN AGARWAL====== TEST ONE EXECUTED");
 
-        Urinals urinal1 = new Urinals();
-        //Testing with 24 characters
-        assertEquals(true, urinal1.validateInputLength("101010101010101010101010"));
+        assertEquals(true, urinal1.validateInputLength("1010101010"));
+    }
+
+    @Test
+    void validateInputType() {
+        System.out.println("======ARYAN AGARWAL====== TEST TWO EXECUTED");
+
+        assertEquals(true, urinal1.validateInputType("10101010"));
     }
 }
