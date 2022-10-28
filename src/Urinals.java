@@ -1,10 +1,7 @@
 public class Urinals {
     public boolean validateInputLength(String bitString)
     {
-        if(bitString.length() <= 20)
-            return true;
-        else
-            return false;
+        return bitString.length() <= 20;
     }
 
     public boolean validateInputType(String bitString)
@@ -25,6 +22,11 @@ public class Urinals {
                 return 1;
             else
                 return 0;
+        }
+
+        for(int i=0; i < bitString.length() - 1; i++) {
+            if (bitString.charAt(i) == '1' && bitString.charAt(i + 1) == '1')
+                return -1;
         }
         return 0;
     }
