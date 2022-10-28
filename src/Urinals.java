@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Urinals {
     static String stringToCheck;
+    static BufferedReader reader;
 
     public static void keyboardInput()
     {
@@ -11,15 +12,27 @@ public class Urinals {
         stringToCheck = sc.next();
     }
 
-    public static int fileInput(){
+    public static int fileExists() {
         try {
             // Enter file path here
-            BufferedReader reader = new BufferedReader(new FileReader("DummyFile.txt"));
-        }
-        catch (Exception e) {
+            reader = new BufferedReader(new FileReader("src/Inputs.txt"));
+        } catch (Exception e) {
             return -1;
         }
+        return 1;
+    }
 
+    public static int fileNotEmpty()
+    {
+        try
+        {
+            if(reader.readLine() == null)
+                return -1;
+        }
+        catch (IOException e)
+        {
+            return -1;
+        }
         return 1;
     }
 
@@ -116,7 +129,8 @@ public class Urinals {
         }
         else if (choice == 2)
         {
-            fileInput();
+            fileExists();
+            fileNotEmpty();
         }
         else
         {

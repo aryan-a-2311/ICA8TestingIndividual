@@ -31,8 +31,14 @@ class UrinalsTest {
     }
 
     @Test
-    void testfileInput() {
+    void testfileExists() {
         System.out.println("======ARYAN AGARWAL====== TEST SIX EXECUTED (File found or not)");
-        assertEquals(1, Urinals.fileInput());
+        assertEquals(1, Urinals.fileExists());
+    }
+
+    @Test
+    void testfileNotEmpty() {
+        System.out.println("======ARYAN AGARWAL====== TEST SEVEN EXECUTED (File Empty or Not)");
+        assertEquals(1, Urinals.fileNotEmpty());
     }
 }
