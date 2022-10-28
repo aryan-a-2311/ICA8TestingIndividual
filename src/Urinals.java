@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 
 public class Urinals {
@@ -10,9 +11,21 @@ public class Urinals {
         stringToCheck = sc.next();
     }
 
+    public static int fileInput(){
+        try {
+            // Enter file path here
+            BufferedReader reader = new BufferedReader(new FileReader("BuyerInfo.txt"));
+        }
+        catch (Exception e) {
+            return -1;
+        }
+
+        return 1;
+    }
+
     public static int validateInputLength(String bitString)
     {
-        if(bitString.length() > 20)
+        if(bitString.length() == 0 || bitString.length() > 20)
         {
             return -1;
         }
@@ -82,8 +95,7 @@ public class Urinals {
         return answer;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("================== MENU ==================");
         System.out.println("1. Input from Keyboard");
@@ -101,6 +113,14 @@ public class Urinals {
             else{
                 System.out.println("Free Urinals: -1");
             }
+        }
+        else if (choice == 2)
+        {
+            fileInput();
+        }
+        else
+        {
+            System.out.println("Wrong Input");
         }
     }
 }

@@ -6,7 +6,7 @@ class UrinalsTest {
 
     @Test
     void testvalidateInputLength() {
-        System.out.println("======ARYAN AGARWAL====== TEST ONE EXECUTED (Length < 20)");
+        System.out.println("======ARYAN AGARWAL====== TEST ONE EXECUTED (0 < Length <= 20)");
 
         assertEquals(1, Urinals.validateInputLength("1010101010"));
     }
@@ -28,5 +28,11 @@ class UrinalsTest {
 
         System.out.println("======ARYAN AGARWAL====== TEST FIVE EXECUTED (A valid string that should return the maximum number of more stalls that can be occupied )");
         assertEquals(3, Urinals.findAvailability("00100010100010"));
+    }
+
+    @Test
+    void testfileInput() {
+        System.out.println("======ARYAN AGARWAL====== TEST SIX EXECUTED (File found or not)");
+        assertEquals(0, Urinals.fileInput());
     }
 }
