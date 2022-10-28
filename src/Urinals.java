@@ -18,4 +18,14 @@ public class Urinals {
         }
         return true;
     }
+
+    public int findAvailability(String bitString) {
+        if(bitString.length() == 1){
+            if(bitString.charAt(0) == '0')
+                return 1;
+            else
+                return 0;
+        }
+        return 0;
+    }
 }
