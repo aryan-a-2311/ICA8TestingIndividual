@@ -23,7 +23,11 @@ class UrinalsTest {
     void testfindAvailability() {
         System.out.println("======ARYAN AGARWAL====== TEST THREE EXECUTED (One bit String)");
         assertEquals(1, urinal1.findAvailability("0"));
+
         System.out.println("======ARYAN AGARWAL====== TEST FOUR EXECUTED (String containing two consecutive 1's)");
         assertEquals(-1, urinal1.findAvailability("01011100010"));
+
+        System.out.println("======ARYAN AGARWAL====== TEST FIVE EXECUTED (A valid string that should return the maximum number of more stalls that can be occupied )");
+        assertEquals(3, urinal1.findAvailability("00100010100010"));
     }
 }

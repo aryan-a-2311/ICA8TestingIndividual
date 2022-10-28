@@ -28,6 +28,42 @@ public class Urinals {
             if (bitString.charAt(i) == '1' && bitString.charAt(i + 1) == '1')
                 return -1;
         }
-        return 0;
+
+        StringBuilder strModifier = new StringBuilder(bitString);
+        int answer = 0;
+
+        for(int i=0; i < strModifier.length(); i++)
+        {
+            if (i == 0){
+                if(strModifier.charAt(i) == '0')
+                {
+                    if(strModifier.charAt(i+1) == '0') {
+                        strModifier.setCharAt(i, '1');
+                        answer++;
+                    }
+                }
+            }
+            else if (i == strModifier.length()-1)
+            {
+                if (strModifier.charAt(i) == '0'){
+                    if (strModifier.charAt(i-1) == '0') {
+                        strModifier.setCharAt(i, '1');
+                        answer++;
+                    }
+                }
+            }
+            else
+            {
+                if(strModifier.charAt(i) == '0')
+                {
+                    if(strModifier.charAt(i-1) == '0' && strModifier.charAt(i+1) == '0')
+                    {
+                        strModifier.setCharAt(i, '1');
+                        answer++;
+                    }
+                }
+            }
+        }
+        return answer;
     }
 }
