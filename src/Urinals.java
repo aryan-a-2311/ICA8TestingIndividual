@@ -14,7 +14,7 @@ public class Urinals {
     public static int fileInput(){
         try {
             // Enter file path here
-            BufferedReader reader = new BufferedReader(new FileReader("BuyerInfo.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("DummyFile.txt"));
         }
         catch (Exception e) {
             return -1;

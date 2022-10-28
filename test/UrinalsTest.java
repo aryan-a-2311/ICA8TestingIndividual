@@ -33,6 +33,6 @@ class UrinalsTest {
     @Test
     void testfileInput() {
         System.out.println("======ARYAN AGARWAL====== TEST SIX EXECUTED (File found or not)");
-        assertEquals(0, Urinals.fileInput());
+        assertEquals(1, Urinals.fileInput());
     }
 }
