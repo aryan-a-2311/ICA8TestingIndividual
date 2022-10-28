@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UrinalsTest {
@@ -37,8 +40,18 @@ class UrinalsTest {
     }
 
     @Test
-    void testfileNotEmpty() {
+    void testfileReader() throws IOException {
         System.out.println("======ARYAN AGARWAL====== TEST SEVEN EXECUTED (File Empty or Not)");
-        assertEquals(1, Urinals.fileNotEmpty());
+        assertEquals(1, Urinals.fileReader());
+    }
+
+    @Test
+    void createWriteFile() {
+        System.out.println("======ARYAN AGARWAL====== TEST EIGHT EXECUTED (No IO Exceptions)");
+        ArrayList<Integer> available = new ArrayList<>();
+        available.add(10010000);
+        available.add(100010000);
+        available.add(1000100001);
+        assertEquals(1, Urinals.createWriteFile(available));
     }
 }

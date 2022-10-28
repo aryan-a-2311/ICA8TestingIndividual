@@ -1,38 +1,92 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Urinals {
     static String stringToCheck;
     static BufferedReader reader;
-
+    static ArrayList<Integer> arrayofStr = new ArrayList<>();
+    static boolean exitLoop = true;
     public static void keyboardInput()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter String: ");
+        System.out.println("\nEnter String: ");
         stringToCheck = sc.next();
+        if(stringToCheck.equals("-1")) {
+            exitLoop = false;
+            System.exit(-1);
+        }
     }
 
     public static int fileExists() {
         try {
             // Enter file path here
-            reader = new BufferedReader(new FileReader("src/Inputs.txt"));
+            reader = new BufferedReader(new FileReader("src/Inputs.dat"));
         } catch (Exception e) {
             return -1;
         }
         return 1;
     }
 
-    public static int fileNotEmpty()
-    {
+    public static int fileReader() throws IOException {
+        String tempStr;
         try
         {
-            if(reader.readLine() == null)
+            if((tempStr = reader.readLine()) == null)
                 return -1;
         }
         catch (IOException e)
         {
             return -1;
         }
+
+        while((tempStr)!=null){
+            if(validateInputLength(tempStr) != -1 && validateInputType(tempStr) != -1)
+            {
+                arrayofStr.add(findAvailability(tempStr));
+            }
+            else{
+                arrayofStr.add(-1);
+            }
+            tempStr = reader.readLine();
+        }
+        createWriteFile(arrayofStr);
+        return 1;
+    }
+
+    public static int createWriteFile(ArrayList<Integer> availableStalls)
+    {
+        File writeFile = new File("rule.txt");
+        int cnt = 1;
+        
+        while(writeFile.exists()) {
+            writeFile = new File("rule" + cnt + ".txt");
+            cnt++;
+        }
+        
+        FileWriter outputWriter;
+        try {
+            outputWriter = new FileWriter(writeFile);
+        } catch (IOException e) {
+            return -1;
+        }
+
+        for (Integer availableStall : availableStalls) {
+            try {
+                outputWriter.write(availableStall + "\n");
+            } catch (IOException e) {
+                return -1;
+            }
+        }
+
+        try {
+            System.out.println("File Created");
+            outputWriter.close();
+        }
+        catch (IOException e) {
+            return -1;
+        }
+
         return 1;
     }
 
@@ -108,7 +162,7 @@ public class Urinals {
         return answer;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("================== MENU ==================");
         System.out.println("1. Input from Keyboard");
@@ -118,19 +172,19 @@ public class Urinals {
 
         if(choice == 1)
         {
-            keyboardInput();
-            if(validateInputLength(stringToCheck) != -1 && validateInputType(stringToCheck) != -1)
-            {
-                System.out.println("Free Urinals: " + findAvailability(stringToCheck));
-            }
-            else{
-                System.out.println("Free Urinals: -1");
+            while(exitLoop){
+                keyboardInput();
+                if (validateInputLength(stringToCheck) != -1 && validateInputType(stringToCheck) != -1) {
+                    System.out.println("Free Urinals: " + findAvailability(stringToCheck));
+                } else {
+                    System.out.println("Free Urinals: -1");
+                }
             }
         }
         else if (choice == 2)
         {
             fileExists();
-            fileNotEmpty();
+            fileReader();
         }
         else
         {
